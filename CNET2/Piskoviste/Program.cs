@@ -31,6 +31,11 @@ namespace Piskoviste
             VytiskStringu(CislaSlovy.ToList());
 
 
+            int CelkemPismen = strings.Select(x => x.Length).Sum();
+            Console.WriteLine(CelkemPismen);
+
+
+
             Console.WriteLine("Konec!");
         }
 
