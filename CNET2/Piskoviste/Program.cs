@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Piskoviste
@@ -14,13 +15,21 @@ namespace Piskoviste
 
             var Kapitalky = strings.Select(n => n.ToUpper());
 
-            foreach(string s in Kapitalky)
+            VytiskStringu(Kapitalky.ToList());
+
+            var JsouSuda = numbers.Where(i => i % 2 == 1).Count() == 0; ;
+
+            Console.WriteLine(JsouSuda);
+
+            Console.WriteLine("Konec!");
+        }
+
+        static void VytiskStringu(List<string> ListKTisku)
+        {
+            foreach (string s in ListKTisku)
             {
                 Console.WriteLine(s);
             }
-
-
-            Console.WriteLine("Konec!");
         }
     }
 }
