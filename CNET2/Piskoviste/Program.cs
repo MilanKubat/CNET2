@@ -17,9 +17,17 @@ namespace Piskoviste
 
             VytiskStringu(Kapitalky.ToList());
 
-            var JsouSuda = numbers.Where(i => i % 2 == 1).Count() == 0; ;
+            var JsouSuda = numbers.Where(i => i % 2 == 1).Count() == 0;
+            var JsouSuda2 = numbers.All(i => i % 2 == 0);
 
             Console.WriteLine(JsouSuda);
+
+            foreach(int cislo in numbers)
+            {
+                Console.WriteLine(cislo + " = " + strings[cislo]);
+            }
+
+
 
             Console.WriteLine("Konec!");
         }
