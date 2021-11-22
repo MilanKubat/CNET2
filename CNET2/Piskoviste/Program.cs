@@ -27,6 +27,8 @@ namespace Piskoviste
                 Console.WriteLine(cislo + " = " + strings[cislo]);
             }
 
+            var CislaSlovy = numbers.Select(x => strings[x]);
+            VytiskStringu(CislaSlovy.ToList());
 
 
             Console.WriteLine("Konec!");
