@@ -18,7 +18,12 @@ namespace Piskoviste
             var pokus = FrekvenceSlov("rur.txt");
             var pokus2 = pokus
                 .OrderByDescending(x => x.Value)
-                .Select (y => y);
+                .Select (y => y).Take(10);
+
+            foreach (var i in pokus2) 
+            {
+                Console.WriteLine(i.Key + ":" + i.Value);
+            };
 
             Console.WriteLine("Konec!");
         }
