@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Piskoviste
@@ -10,6 +11,59 @@ namespace Piskoviste
         {
             Console.WriteLine("Začínáme!");
 
+            //Opakovani();
+
+            //Dictionary
+            //var pokus = FrekvencePismen("Abrakadabra");
+            var pokus = FrekvenceSlov("rur.txt");
+            var pokus2 = pokus
+                .OrderByDescending(x => x.Value)
+                .Select (y => y);
+
+            Console.WriteLine("Konec!");
+        }
+
+        
+        static Dictionary<string, int> FrekvenceSlov(string NazevSouboru)
+        {
+            Dictionary<string, int> Seznam = new Dictionary<string, int>();
+            var kniha = File.ReadAllText(NazevSouboru);
+            var slova = kniha.Split(" ");
+            foreach(string slovo in slova)
+            {
+                if (Seznam.ContainsKey(slovo))
+                {
+                    Seznam[slovo] = Seznam[slovo] + 1;
+                }
+                else
+                {
+                    Seznam.Add(slovo, 1);
+                }
+            }
+            
+            return Seznam;
+        }
+
+
+        static Dictionary<char,int>FrekvencePismen(string vstup)
+        {
+            Dictionary<char, int> Seznam = new Dictionary<char, int>();
+            var Vysledek = vstup
+                .GroupBy(x => x)
+                .Select(g => (g.Key, g.Count()))
+                .OrderBy(x => x.Key)
+                .OrderByDescending(x => x.Item2);
+
+            foreach(var tuple in Vysledek)
+            {
+                Seznam.Add(tuple.Key, tuple.Item2);
+            }
+
+            return Seznam;
+        }
+        
+        private static void Opakovani()
+        {
             var numbers = new[] { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
             var strings = new[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
@@ -22,7 +76,7 @@ namespace Piskoviste
 
             Console.WriteLine(JsouSuda);
 
-            foreach(int cislo in numbers)
+            foreach (int cislo in numbers)
             {
                 Console.WriteLine(cislo + " = " + strings[cislo]);
             }
@@ -35,8 +89,30 @@ namespace Piskoviste
             Console.WriteLine(CelkemPismen);
 
 
+            //ukol 5 - vytvorit dvojice UPPER lower case
+            var VelkaMalaCisla = strings
+                .Select(slovo => new Dvojice(slovo.ToLower(), slovo.ToUpper()))
+                .Select(x => x.MalaPismena + ":" + x.VelkaPismena);
+            VytiskStringu(VelkaMalaCisla.ToList());
 
-            Console.WriteLine("Konec!");
+            VelkaMalaCisla = strings
+                .Select(x => (x.ToLower(), x.ToUpper()))
+                .Select(y => y.Item1 + ":" + y.Item2);
+            VytiskStringu(VelkaMalaCisla.ToList());
+
+
+            //ukol 6 - zjistete frekvci pismen v strings
+            var Slouceny = string.Join("", strings);
+            var Vysledek = Slouceny
+                .GroupBy(x => x)
+                .Select(g => (g.Key, g.Count()))
+                .OrderBy(x => x.Key)
+                .OrderByDescending(x => x.Item2);
+
+            foreach (var item in Vysledek)
+            {
+                Console.WriteLine(item.Key + ":" + item.Item2);
+            }
         }
 
         static void VytiskStringu(List<string> ListKTisku)
@@ -45,6 +121,11 @@ namespace Piskoviste
             {
                 Console.WriteLine(s);
             }
+        }
+
+        static void ObecnyTisk<T>(IEnumerable<T> veci)
+        {
+            
         }
     }
 }
