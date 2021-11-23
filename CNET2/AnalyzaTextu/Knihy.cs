@@ -2,27 +2,34 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AnalyzaTextu
 {
     public class Knihy
     {
-        public static Dictionary<string, int> FrekvenceSlov(string NazevSouboru)
+        public static async Task<Dictionary<string, int>> FrekvenceSlov(string NazevSouboru)
         {
             Dictionary<string, int> Seznam = new Dictionary<string, int>();
-            var kniha = File.ReadAllText(NazevSouboru);
-            var slova = kniha.Split(" ");
-            foreach (string slovo in slova)
-            {
-                if (string.IsNullOrWhiteSpace(slovo)) continue;
+            var radky = await File.ReadAllLinesAsync(NazevSouboru);
 
-                if (Seznam.ContainsKey(slovo))
+            foreach (string s in radky)
+            {
+                var slova = s.Split(" ");
+
+
+                foreach (string slovo in slova)
                 {
-                    Seznam[slovo] = Seznam[slovo] + 1;
-                }
-                else
-                {
-                    Seznam.Add(slovo, 1);
+                    if (string.IsNullOrWhiteSpace(slovo)) continue;
+
+                    if (Seznam.ContainsKey(slovo))
+                    {
+                        Seznam[slovo] = Seznam[slovo] + 1;
+                    }
+                    else
+                    {
+                        Seznam.Add(slovo, 1);
+                    }
                 }
             }
 
@@ -60,14 +67,14 @@ namespace AnalyzaTextu
             return Directory.GetFiles(cesta).ToList();
         }
 
-        public static void KompletniAnalyza (string cesta)
+        public static async void KompletniAnalyza (string cesta)
         {
             var soubory = SouboryVAdresari(cesta);
             foreach (string soubor in soubory)
             {
                 var KompletniSeznam = new Dictionary<string, int>();
                 var Top10 = new Dictionary<string, int>();
-                KompletniSeznam = FrekvenceSlov(soubor);
+                KompletniSeznam = await FrekvenceSlov(soubor);
                 Top10 = Nejcastejsi(KompletniSeznam, 10);
 
                 Console.WriteLine("SOUBOR:   " + soubor);
