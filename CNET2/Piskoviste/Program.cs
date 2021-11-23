@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using AnalyzaTextu;
 
 namespace Piskoviste
 {
@@ -9,45 +10,20 @@ namespace Piskoviste
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Začínáme!");
+            Console.WriteLine("Začínáme!\n");
 
-            //Opakovani();
-
-            //Dictionary
-            //var pokus = FrekvencePismen("Abrakadabra");
-            var pokus = FrekvenceSlov("rur.txt");
-            var pokus2 = pokus
-                .OrderByDescending(x => x.Value)
-                .Select (y => y).Take(10);
-
-            foreach (var i in pokus2) 
-            {
-                Console.WriteLine(i.Key + ":" + i.Value);
-            };
-
-            Console.WriteLine("Konec!");
+            Knihy.KompletniAnalyza(@"c:\DATA\Programovani\REPO2\Knihy\");
+                        
+            Console.WriteLine("\nKonec!");
         }
 
         
-        static Dictionary<string, int> FrekvenceSlov(string NazevSouboru)
-        {
-            Dictionary<string, int> Seznam = new Dictionary<string, int>();
-            var kniha = File.ReadAllText(NazevSouboru);
-            var slova = kniha.Split(" ");
-            foreach(string slovo in slova)
-            {
-                if (Seznam.ContainsKey(slovo))
-                {
-                    Seznam[slovo] = Seznam[slovo] + 1;
-                }
-                else
-                {
-                    Seznam.Add(slovo, 1);
-                }
-            }
-            
-            return Seznam;
-        }
+        
+
+
+
+
+        
 
 
         static Dictionary<char,int>FrekvencePismen(string vstup)

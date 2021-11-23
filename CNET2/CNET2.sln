@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Piskoviste", "Piskoviste\Piskoviste.csproj", "{6C1AE671-5B26-423E-8EDA-A79328265E64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OknovaAplikace", "OknovaAplikace\OknovaAplikace.csproj", "{36D84B90-E434-4B1B-8373-2397E6FDAC76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyzaTextu", "AnalyzaTextu\AnalyzaTextu.csproj", "{5A3FA96C-231F-4D2D-83E4-05D363120977}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{6C1AE671-5B26-423E-8EDA-A79328265E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C1AE671-5B26-423E-8EDA-A79328265E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C1AE671-5B26-423E-8EDA-A79328265E64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36D84B90-E434-4B1B-8373-2397E6FDAC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D84B90-E434-4B1B-8373-2397E6FDAC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D84B90-E434-4B1B-8373-2397E6FDAC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D84B90-E434-4B1B-8373-2397E6FDAC76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A3FA96C-231F-4D2D-83E4-05D363120977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3FA96C-231F-4D2D-83E4-05D363120977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3FA96C-231F-4D2D-83E4-05D363120977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3FA96C-231F-4D2D-83E4-05D363120977}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
