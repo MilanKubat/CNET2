@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using AnalyzaTextu;
 
 namespace Piskoviste
@@ -12,18 +13,45 @@ namespace Piskoviste
         {
             Console.WriteLine("Začínáme!\n");
 
-            Knihy.KompletniAnalyza(@"c:\DATA\Programovani\REPO2\Knihy\");
-                        
+            //Knihy.KompletniAnalyza(@"c:\DATA\Programovani\REPO2\Knihy\");
+
+            //Tasky();
+            Cviceni.Hlavni();
+
+
+        }
+
+        private static void Tasky()
+        {
+            var task1 = Task.Run(() => TestTisk("Jedna"));
+
+            TestTiskAsync("Dva");
+
+            task1.Wait();
+
             Console.WriteLine("\nKonec!");
         }
 
-        
-        
 
 
 
 
-        
+        static void TestTisk(string nazev)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(nazev + i);
+                
+            }
+        }
+
+        static void TestTiskAsync(string nazev)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(nazev + i);
+            }
+        }
 
 
         static Dictionary<char,int>FrekvencePismen(string vstup)
